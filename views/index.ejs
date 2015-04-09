@@ -1,0 +1,85 @@
+<html>
+<head>
+	<title>About Mongoose</title>
+	<style type="text/css">
+#container{
+	margin: 20px auto;
+	width: 970px;
+	font-family: arial;
+	font-size: 12px;
+}
+img{
+	border: solid 1px silver;
+	height: 150px;
+}
+h4{margin-left: 40px;}
+img,h4{display: inline-block;
+vertical-align: top}
+ul{
+	list-style: none;
+	
+}
+
+li{
+	display: inline-block;
+	margin-top: 5px;
+	color: yellow;
+	font-size: 20px;
+	padding: 10px;
+}
+ul a{
+	color: white;
+	font-size: 12px;
+}
+#nav{
+	height: 60px;
+	background-color: black;
+	width: 970px
+}
+.mong{
+	margin-top: 40px;
+	border: solid 1px silver;
+	padding: 10px;
+}
+.mong ul{
+	margin-left: 800px;
+}
+.mong li{
+	display: inline-block;
+	color: yellow;
+	font-size: 20px;
+	padding: 10px;
+
+}
+.mong a{
+	color: blue;
+}
+
+</style>
+</head>
+<body>
+<div id="container">
+	<div id="nav">
+		<ul>
+			<li>All about Mongoose!</li>
+			<li><a href ="/mongooses/new">Add New</a></li>
+		</ul>
+	</div>
+	<%  for(var mongoose in mongooses) {%>
+	<div class="mong">
+		<img src="<%= mongooses[mongoose].url %>">
+		<h4><%= mongooses[mongoose].name %> (
+		Country : <%= mongooses[mongoose].country %>)</h4>
+		<p>Description: <%= mongooses[mongoose].description %></p>
+		<p>Author : <%= mongooses[mongoose].author %></p>	
+		<ul>
+			<li><a href="/mongooses/<%= mongooses[mongoose]._id %>/edit"> Edit</a></li>
+			<li><a href="/mongooses/<%= mongooses[mongoose]._id %>/destroy"> Delete</a></li>
+		</ul>
+		
+	</div>
+	<% } %>
+
+</div>
+</body>
+</html>
